@@ -1,11 +1,12 @@
 #include "poligon.h"
-#include "point.h"
-#include "figure.h"
 #include "figureutils.h"
-#include <iostream>
+#include "point.h"
+#include <math.h>
 
+Poligon::Poligon()
+{
 
-Poligon::Poligon(){}
+}
 
 Poligon::Poligon(Point p1, Point p2, Point p3, Point p4){
     m_p1 = p1;
@@ -25,29 +26,27 @@ int Poligon::resultPerimeter(){
 int Poligon::resultSquare()
 {
     int resultPolPerimeter = 0.5 * resultPerimeter();
-    return abs(sqrt(resultPolPerimeter*(resultPolPerimeter - FigureUtils::lineLength(m_p1, m_p2))*(resultPolPerimeter - FigureUtils::lineLength(m_p2, m_p3))*
-            (resultPolPerimeter - FigureUtils::lineLength(m_p3, m_p4))*(resultPolPerimeter - FigureUtils::lineLength(m_p4, m_p1))));
+    // очень длинные строки
+    return abs(sqrt(resultPolPerimeter*(resultPolPerimeter - FigureUtils::lineLength(m_p1, m_p2))*
+           (resultPolPerimeter - FigureUtils::lineLength(m_p2, m_p3))*
+           (resultPolPerimeter - FigureUtils::lineLength(m_p3, m_p4))*
+           (resultPolPerimeter - FigureUtils::lineLength(m_p4, m_p1))));
 
 }
 
 void Poligon::fillPoints(){
-    m_p1 = fillPoint(0);
-    m_p2 = fillPoint(1);
-    m_p3 = fillPoint(2);
-    m_p4 = fillPoint(3);
+    m_p1 = FigureUtils::fillPoint(0);
+    m_p2 = FigureUtils::fillPoint(1);
+    m_p3 = FigureUtils::fillPoint(2);
+    m_p4 = FigureUtils::fillPoint(3);
 }
 
 bool Poligon::checkForm()
 {
-    bool resForPoligon;
-    if (FigureUtils::lineLength(m_p1, m_p2) + FigureUtils::lineLength(m_p2, m_p3) + FigureUtils::lineLength(m_p3, m_p4) >
-        FigureUtils::lineLength(m_p4, m_p1))
-    {
-        resForPoligon = true;
-    } else {
-        resForPoligon = false;
-    }
-    return resForPoligon;
+    return FigureUtils::lineLength(m_p1, m_p2) +
+           FigureUtils::lineLength(m_p2, m_p3) +
+           FigureUtils::lineLength(m_p3, m_p4) >
+           FigureUtils::lineLength(m_p4, m_p1);
 }
 
 std::string Poligon::myType()

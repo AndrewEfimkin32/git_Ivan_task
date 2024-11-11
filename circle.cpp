@@ -1,5 +1,6 @@
 #include "circle.h"
 #include "figureutils.h"
+#include <math.h>
 
 Circle::Circle(){}
 
@@ -20,20 +21,13 @@ int Circle::resultSquare()
 
 void Circle::fillPoints()
 {
-    m_p1 = fillPoint(0);
-    m_p2 = fillPoint(1);
+    m_p1 = FigureUtils::fillPoint(0);
+    m_p2 = FigureUtils::fillPoint(1);
 }
 
 bool Circle::checkForm()
 {
-    bool resForCircle;
-    if (FigureUtils::lineLength(m_p1, m_p2) > 0)
-    {
-        resForCircle = true;
-    } else {
-        resForCircle = false;
-    }
-    return resForCircle;
+    return FigureUtils::lineLength(m_p1, m_p2) > 0;
 }
 
 std::string Circle::myType()

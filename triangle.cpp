@@ -1,5 +1,6 @@
 #include "triangle.h"
 #include "figureutils.h"
+#include <math.h>
 
 
 Triangle::Triangle()
@@ -31,23 +32,16 @@ int Triangle::resultSquare()
 
 void Triangle::fillPoints()
 {
-    m_p1 = fillPoint(0);
-    m_p2 = fillPoint(1);
-    m_p3 = fillPoint(2);
+    m_p1 = FigureUtils::fillPoint(0);
+    m_p2 = FigureUtils::fillPoint(1);
+    m_p3 = FigureUtils::fillPoint(2);
 }
 
 bool Triangle::checkForm()
 {
-    bool resForTriangle;
-    if (FigureUtils::lineLength(m_p1, m_p2) + FigureUtils::lineLength(m_p2, m_p3) > FigureUtils::lineLength(m_p3, m_p1) &&
+    return FigureUtils::lineLength(m_p1, m_p2) + FigureUtils::lineLength(m_p2, m_p3) > FigureUtils::lineLength(m_p3, m_p1) &&
         FigureUtils::lineLength(m_p2, m_p3) + FigureUtils::lineLength(m_p3, m_p1) > FigureUtils::lineLength(m_p1, m_p2) &&
-        FigureUtils::lineLength(m_p1, m_p2) + FigureUtils::lineLength(m_p3, m_p1) > FigureUtils::lineLength(m_p2, m_p3))
-    {
-        resForTriangle = true;
-    } else {
-        resForTriangle = false;
-    }
-    return resForTriangle;
+        FigureUtils::lineLength(m_p1, m_p2) + FigureUtils::lineLength(m_p3, m_p1) > FigureUtils::lineLength(m_p2, m_p3);
 }
 
 std::string Triangle::myType()

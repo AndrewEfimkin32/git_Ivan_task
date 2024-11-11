@@ -1,13 +1,12 @@
 #ifndef INFOMENU_H
 #define INFOMENU_H
-#include <iostream>
 
 
 class InfoMenu
 {
 public:
-    void mainMenu();
-    void secondMenu();
+    static void mainMenu(); //< static.
+    static void secondMenu(); //< static.
 };
 
 #endif // INFOMENU_H

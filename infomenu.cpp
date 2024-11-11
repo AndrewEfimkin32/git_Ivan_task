@@ -1,4 +1,5 @@
 #include "infomenu.h"
+#include <iostream>
 
 
 void InfoMenu::mainMenu()

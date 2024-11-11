@@ -1,4 +1,5 @@
 #include "scene.h"
+#include <iostream>
 
 Scene::Scene()
 {
@@ -18,15 +19,14 @@ Scene::~Scene()
 void Scene::addFigure(Figure *figure)
 {
     figure->fillPoints();
-    if (figure->checkForm())
+    if (!figure->checkForm())
     {
+        std::cout<< "\nIt's not a "<< figure->myType() <<std::endl;
+     } else {
         std::cout<< "\n" << figure->myType() << " is create!!!" << std::endl;
         std::cout<< "It's perimetr is:" << figure->resultPerimeter()<<std::endl;
         std::cout<< "It's square is:" << figure->resultSquare()<<std::endl;
         figures.push_back(figure);
-     } else {
-        std::cout<< "\nIt's not a "<< figure->myType() <<std::endl;
-        delete figure;
     }
 }
 
@@ -40,23 +40,19 @@ void Scene::printList()
     }
 }
 
-int Scene::sizeVector()
+int Scene::size()
 {
     return figures.size();
 }
 
-bool Scene::checkVector()
+bool Scene::empty()
 {
-    if (figures.empty()){
-        return true;
-    } else {
-        return false;
-    }
+    return figures.empty();
 }
 
 bool Scene::removeFigure(const int index)
 {
-    if (index <= figures.size())
+    if (index <= figures.size() && index >= 0)
     {
         figures.erase(figures.begin() + index);
         std::cout<< "\nThe shape has been deleted" << std::endl;
@@ -69,23 +65,20 @@ bool Scene::removeFigure(const int index)
 
 bool Scene::clearList()
 {
-    if(figures.size() > 0){
+    if (figures.size() > 0){
         figures.clear();
-        std::cout<<"\nThe list has been cleared"<< std::endl;
         return true;
     } else {
-        std::cout<<"\nThe list is empty and does not need to be cleared"<< std::endl;
-        return false;
-    }
+        return false;}
 }
 
 bool Scene::editFigure(const int index)
-{
-    if (index <= figures.size()){
+{  
+    // нет проверки на отрицательные индексы
+    if (index <= figures.size() &&  index >= 0){
         Figure* currentForEdit = figures[index];
         currentForEdit->fillPoints();
         std::cout<< "\nThe "<< currentForEdit->myType() << " has been changed" << std::endl;
-        delete currentForEdit;
         return true;
     }else {
         std::cout << "\nThere is no such figure in the list" << std::endl;

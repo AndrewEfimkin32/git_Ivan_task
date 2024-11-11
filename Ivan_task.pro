@@ -11,19 +11,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     point.cpp \
-    figureutils.cpp \
-    figure.cpp \
     poligon.cpp \
     triangle.cpp \
     rectangle.cpp \
     square.cpp \
     circle.cpp \
     scene.cpp \
-    infomenu.cpp
+    infomenu.cpp \
+    figureutils.cpp
 
 HEADERS += \
     point.h \
-    figureutils.h \
     figure.h \
     poligon.h \
     triangle.h \
@@ -31,4 +29,5 @@ HEADERS += \
     square.h \
     circle.h \
     scene.h \
-    infomenu.h
+    infomenu.h \
+    figureutils.h

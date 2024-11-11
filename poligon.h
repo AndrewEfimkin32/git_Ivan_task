@@ -1,6 +1,5 @@
 #ifndef POLIGON_H
 #define POLIGON_H
-#include "point.h"
 #include "figure.h"
 
 

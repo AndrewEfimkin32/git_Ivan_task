@@ -8,11 +8,10 @@ class Scene
 public:
     Scene();
     ~Scene();
-    void getVector();
     void addFigure(Figure *figure);
     void printList();
-    int sizeVector();
-    bool checkVector();
+    int size();
+    bool empty();
     bool clearList();
     bool removeFigure(const int index);
     bool editFigure(const int index);
