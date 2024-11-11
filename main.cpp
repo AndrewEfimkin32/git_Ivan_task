@@ -23,7 +23,7 @@ int main()
        menu.mainMenu();
        std::cin >> choise;
        switch (choise) {
-       case 0: std::cout<< "\nGood bye!!!"; break;
+       case 0: std::cout<< "\nBro, good bye!!!"; break;
        case 1:menu.secondMenu(); break;
        case 2:
            std::cout<< "\nList of figures on stage :"<<std::endl;
